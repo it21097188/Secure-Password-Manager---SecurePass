@@ -3,15 +3,15 @@ from hashlib import sha256
 
 MASTERPW = "KHAN4712"
 
-PASSWORD = input("ENTER THE MASTER PASSWORD :-")
+PASSWORD = input("Enter the Password :-")
 
-while MASTERPW != PASSWORD:
-    if MASTERPW != PASSWORD:
+while secret_key != PASSWORD:
+    if secret_key != PASSWORD:
         print("Invalid Password\n")
         break
     
-if MASTERPW == PASSWORD:
-        print("WELCOME BACK SIR :)")
+if secret_key == PASSWORD:
+        print("Welcome back :)")
 
 conn = sqlite3.connect('pass_manager.db')
 
@@ -38,7 +38,7 @@ def add_password(service, admin_pass):
     conn.commit()
     return create_password(secret_key, service, admin_pass)
 
-if MASTERPW == PASSWORD:
+if secret_key == PASSWORD:
     try:
         conn.execute('''CREATE TABLE KEYS
             (PASS_KEY TEXT PRIMARY KEY NOT NULL);''')
@@ -50,9 +50,9 @@ if MASTERPW == PASSWORD:
     while True:
         print("\n"+ "*"*15)
         print("Commands:")
-        print("Press 1 : TO Genrate a Password")
-        print("Press 2 : To Get Stored Password")
-        print("Press 3 : Quit")
+        print("Press 1 : To create Password")
+        print("Press 2 : To create a Stored Password")
+        print("Press 3 : Exit")
         print("*"*15)
         input_ = input(":")
 
@@ -60,10 +60,10 @@ if MASTERPW == PASSWORD:
             break
         if input_ == "1":
             service = input("What is the name of the service?\n")
-            print("\n" + service.capitalize() + " password created:\n" + add_password(service, MASTERPW))
+            print("\n" + service.capitalize() + " password created:\n" + add_password(service, secret_key))
         if input_ == "2":
             service = input("What is the name of the service?\n")
-            print("\n" + service.capitalize() + " password:\n" +get_password(MASTERPW, service))
+            print("\n" + service.capitalize() + " password:\n" +get_password(secret_key, service))
 
 
 

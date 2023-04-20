@@ -1,7 +1,7 @@
 import sqlite3
 from hashlib import sha256
 
-MASTERPW = "KHAN4712"
+MASTERPW = "jithmi123"
 
 PASSWORD = input("Enter the Password :-")
 
